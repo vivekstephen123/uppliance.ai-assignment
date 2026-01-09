@@ -1,4 +1,5 @@
 **Design Explanation**
+
 **State Model**
 The game state is maintained in a single in-memory dictionary that persists across turns.
 It tracks the current round, maximum rounds, user and bot scores, bomb usage for each player, and a game-over flag.
