@@ -10,7 +10,9 @@ This approach ensures the game never exceeds three rounds, enforces one-time bom
 
 The chatbot follows an agent-style architecture with explicit tool-like functions:
 i. validate_move handles intent validation and rule enforcement.
+
 ii. resolve_round applies game logic and determines the winner.
+
 iii. update_game_state mutates state and controls game progression.
 
 The main loop acts as the controller, coordinating user input, tool execution, and response generation.
@@ -25,12 +27,17 @@ This prioritizes correctness and architectural clarity over conversational richn
 **Improvements with More Time**
 
 With more time or broader API access, the system could be extended with:
+
 i. LLM-generated referee commentary
+
 ii. Multiple agents (referee and opponent)
+
 iii. Structured JSON outputs for each round
+
 iv. Unit tests for game logic
+
 v. Configurable difficulty levels for the bot
 
 
 
-Configurable difficulty levels for the bot
+
