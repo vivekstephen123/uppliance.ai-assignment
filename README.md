@@ -1,4 +1,4 @@
-# Game Design Documentation
+# AI Game Referee chatbot: Rock–Paper–Scissors–Plus
 
 ## State Model
 The game state is maintained in a single in-memory dictionary that persists across turns.  
