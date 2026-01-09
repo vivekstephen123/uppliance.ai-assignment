@@ -1,33 +1,60 @@
-**Design Explanation**
+# Game Design Documentation
 
-**State Model**
-The game state is maintained in a single in-memory dictionary that persists across turns.
-It tracks the current round, maximum rounds, user and bot scores, bomb usage for each player, and a game-over flag.
-This approach ensures the game never exceeds three rounds, enforces one-time bomb usage, and avoids relying on prompt-based memory or external storage.
+## State Model
+The game state is maintained in a single in-memory dictionary that persists across turns.  
+It tracks the following:
 
-**Agent / Tool Design**
+- Current round
+- Maximum rounds
+- User and bot scores
+- Bomb usage for each player
+- Game-over flag
+
+This design ensures:
+
+- The game never exceeds three rounds
+- Each player can use their bomb only once
+- No reliance on prompt-based memory or external storage
+
+---
+
+## Agent / Tool Design
 The chatbot follows an agent-style architecture with explicit tool-like functions:
-i. validate_move handles intent validation and rule enforcement.
 
-ii. resolve_round applies game logic and determines the winner.
+1. **validate_move** – Handles intent validation and rule enforcement  
+2. **resolve_round** – Applies game logic and determines the winner  
+3. **update_game_state** – Mutates the game state and controls game progression  
 
-iii. update_game_state mutates state and controls game progression.
+The main loop acts as the controller, coordinating:
 
-The main loop acts as the controller, coordinating user input, tool execution, and response generation.
-This clean separation mirrors ADK principles of intent understanding, logic execution, and response synthesis.
+- User input
+- Tool execution
+- Response generation  
 
-**Tradeoffs Made**
-Although LLM-based referee responses were initially considered, they were removed due to restricted and inconsistent model availability in the execution environment.
-To ensure reliability and deterministic behavior, rule-based responses were used instead.
-This prioritizes correctness and architectural clarity over conversational richness.
+This clean separation mirrors ADK principles of:
 
-**Improvements with More Time**
-With more time or broader API access, the system could be extended with:
-i. LLM-generated referee commentary
-ii. Multiple agents (referee and opponent)
-iii. Structured JSON outputs for each round
-iv. Unit tests for game logic
-v. Configurable difficulty levels for the bot
+- Intent understanding
+- Logic execution
+- Response synthesis
+
+---
+
+## Trade-offs Made
+- LLM-based referee responses were initially considered but removed due to restricted and inconsistent model availability.  
+- Rule-based responses were used instead to ensure **reliability** and **deterministic behavior**.  
+- Priority was given to **correctness** and **architectural clarity** over conversational richness.
+
+---
+
+## Improvements with More Time
+With additional time or broader API access, the system could be extended with:
+
+1. LLM-generated referee commentary  
+2. Multiple agents (referee and opponent)  
+3. Structured JSON outputs for each round  
+4. Unit tests for game logic  
+5. Configurable difficulty levels for the bot
+
 
 
 
